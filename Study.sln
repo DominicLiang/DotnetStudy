@@ -13,9 +13,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-面向对象", "04-面�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-委托和事件", "05-委托和事件\05-委托和事件.csproj", "{B7BE7EFD-4CC4-426B-AEA8-2909DEFC3699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-IO和序列化", "06-IO和序列化\06-IO和序列化.csproj", "{3762BDAC-6391-4724-BD49-A51C5FB3DCE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-IO和序列化", "06-IO和序列化\06-IO和序列化.csproj", "{3762BDAC-6391-4724-BD49-A51C5FB3DCE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-Lambda和LINQ", "07-Lambda和LINQ\07-Lambda和LINQ.csproj", "{6A108D38-966D-4090-A4CB-06B35BAC57CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-Lambda和LINQ", "07-Lambda和LINQ\07-Lambda和LINQ.csproj", "{6A108D38-966D-4090-A4CB-06B35BAC57CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{7084936A-8202-4AC5-A38A-D35E3E2212B1}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-表达式目录树", "08-表达式目录树\08-表达式目录树.csproj", "{4B7F3108-06A9-4F8E-92AB-02347C6663A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +61,10 @@ Global
 		{6A108D38-966D-4090-A4CB-06B35BAC57CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A108D38-966D-4090-A4CB-06B35BAC57CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A108D38-966D-4090-A4CB-06B35BAC57CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7F3108-06A9-4F8E-92AB-02347C6663A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7F3108-06A9-4F8E-92AB-02347C6663A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7F3108-06A9-4F8E-92AB-02347C6663A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7F3108-06A9-4F8E-92AB-02347C6663A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

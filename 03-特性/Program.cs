@@ -8,11 +8,12 @@ namespace _03_特性;
 // 4 Remark封装、attribute验证
 // 
 // 特性：中括号声明
-//           就是一个类，直接/间接继承自attribute
-//           一般以Attribute结尾，声明时可以省略掉
+//      就是一个类，直接/间接继承自attribute
+//      一般以Attribute结尾，声明时可以省略掉
 // 错觉：每一个特性都可以带来对应的功能
 // 实际：特性添加后，编译会在元素内部产生IL
-//            但是我们是没办法直接使用的，而且在metadata里面会有记录
+//      但是我们是没办法直接使用的，而且在metadata里面会有记录
+
 // 特性本身没有用，就像一个扩充类
 // 程序运行的过程中，我们能找到特性，而且也能应用
 // 任何一个可以生效的特性，都是因为有地方主动使用了的
@@ -20,9 +21,9 @@ namespace _03_特性;
 // 可以在没有破坏类型封装的前提下，可以加点额外的信息和行为
 
 // AttributeUsage特性，用来修饰自己写的自定义特性
-[AttributeUsage(AttributeTargets.All,  // 决定自定义特性的使用目标
-                           AllowMultiple = false,  // 决定自定义特性是否可以单个特性多次重复使用 默认false
-                           Inherited = true)]         // 决定自定义特性是否可以继承 默认true
+[AttributeUsage(AttributeTargets.All,
+                AllowMultiple = false,
+                Inherited = true)]  // 决定自定义特性是否可以继承 默认true
 public class CustomAttribute : Attribute
 {
     public CustomAttribute()
@@ -47,8 +48,8 @@ public class CustomAttribute : Attribute
 }
 
 // 特性的使用
-//[Custom]    // 无参特性
-//[Custom()] // 无参特性
+//[Custom]                   // 无参特性
+//[Custom()]                 // 无参特性
 //[Custom(123), Custom(123)] // 有参特性和重复使用
 [Custom(123, Description = "类", Remark = "类")] // 有参特性同时赋值里面的字段或属性
 public class Student

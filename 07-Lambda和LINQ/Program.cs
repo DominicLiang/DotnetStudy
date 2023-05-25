@@ -123,16 +123,88 @@ public class LinqShow
         }
         {
             // 多条件过滤 这里保留等级大于8且门派为丐帮
-            // 查询表达式
             var resE = from m in masters
                        where m.Level > 8 && m.Menpai == "丐帮"
                        select m;
-            // 扩展方法
             var resM = masters.Where(m => m.Level > 8 && m.Menpai == "丐帮");
-            foreach (var item in resE)
-            {
-                Console.WriteLine(item);
-            }
+
+        }
+        {
+            // 联合查询 可以理解成嵌套foreach
+            var resE = from m in masters
+                       from k in kongfus
+                       where m.Kongfu == k.Name && k.Power > 90
+                       select new  // 匿名类
+                       {
+                           master = m,
+                           kongfu = k
+                       };
+            // join on
+            var resE2 = from m in masters
+                        join k in kongfus
+                        on m.Kongfu equals k.Name
+                        where k.Power > 90
+                        select new
+                        {
+                            master = m,
+                            kongfu = k
+                        };
+            var resM = masters.SelectMany(m => kongfus,
+                (m, k) => new
+                {
+                    master = m,
+                    kongfu = k
+                }).Where(x => x.master.Kongfu == x.kongfu.Name && x.kongfu.Power > 90);
+        }
+        {
+            // 排序 默认从小到大
+            var resE = from m in masters
+                       orderby m.Level, m.Age //orderby m.Level descending 倒序
+                       select m;
+            var resM = masters.OrderBy(m => m.Level).ThenBy(m => m.Age);
+
+        }
+        {
+            // join equals into 分组
+            // 根据两个集合里面按特定的相等项分组
+            var resE = from k in kongfus
+                       join m in masters
+                       on k.Name equals m.Kongfu
+                       into groups
+                       orderby groups.Count() descending
+                       select new
+                       {
+                           kongfu = k,
+                           count = groups.Count()
+                       };
+        }
+        {
+            // group by
+            var resE = from m in masters
+                       group m by m.Menpai into groups
+                       orderby groups.Count() descending
+                       select new
+                       {
+                           menpai = groups.Key,
+                           count = groups.Count()
+                       };
+        }
+        {
+            // Any 集合里面有任何一个满足条件就返回true
+            bool resE = masters.Any(m => m.Menpai == "丐帮");
+        }
+        {
+            // All 集合里面所有对象都满足条件才返回true
+            bool resE = masters.Any(m => m.Menpai == "丐帮");
+        }
+        {
+            // 按id单双数分成两组
+            // let 使用一个等式创建一个全新的集合
+            // 之后可以用group by根据这个新集合分组
+            var resE = from m in masters
+                       let news = m.Id % 2
+                       group m by news into groups
+                       select groups;
         }
     }
 }
