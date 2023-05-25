@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33712.159
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-泛型", "01-泛型\01-泛型.csproj", "{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-反射", "02-反射\02-反射.csproj", "{56E239CC-A90D-4989-A5FF-7A9597435451}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-特性", "03-特性\03-特性.csproj", "{274F3428-BC62-405B-A8E8-FB5820F82599}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-面向对象", "04-面向对象\04-面向对象.csproj", "{2B972E78-97EA-4550-8C3A-CCA2A352ED84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-委托和事件", "05-委托和事件\05-委托和事件.csproj", "{B7BE7EFD-4CC4-426B-AEA8-2909DEFC3699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-IO和序列化", "06-IO和序列化\06-IO和序列化.csproj", "{3762BDAC-6391-4724-BD49-A51C5FB3DCE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-Lambda和LINQ", "07-Lambda和LINQ\07-Lambda和LINQ.csproj", "{6A108D38-966D-4090-A4CB-06B35BAC57CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E239CC-A90D-4989-A5FF-7A9597435451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E239CC-A90D-4989-A5FF-7A9597435451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E239CC-A90D-4989-A5FF-7A9597435451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E239CC-A90D-4989-A5FF-7A9597435451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{274F3428-BC62-405B-A8E8-FB5820F82599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{274F3428-BC62-405B-A8E8-FB5820F82599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{274F3428-BC62-405B-A8E8-FB5820F82599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{274F3428-BC62-405B-A8E8-FB5820F82599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B972E78-97EA-4550-8C3A-CCA2A352ED84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B972E78-97EA-4550-8C3A-CCA2A352ED84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B972E78-97EA-4550-8C3A-CCA2A352ED84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B972E78-97EA-4550-8C3A-CCA2A352ED84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7BE7EFD-4CC4-426B-AEA8-2909DEFC3699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7BE7EFD-4CC4-426B-AEA8-2909DEFC3699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7BE7EFD-4CC4-426B-AEA8-2909DEFC3699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7BE7EFD-4CC4-426B-AEA8-2909DEFC3699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3762BDAC-6391-4724-BD49-A51C5FB3DCE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3762BDAC-6391-4724-BD49-A51C5FB3DCE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3762BDAC-6391-4724-BD49-A51C5FB3DCE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3762BDAC-6391-4724-BD49-A51C5FB3DCE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A108D38-966D-4090-A4CB-06B35BAC57CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A108D38-966D-4090-A4CB-06B35BAC57CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A108D38-966D-4090-A4CB-06B35BAC57CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A108D38-966D-4090-A4CB-06B35BAC57CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F2B484C-B267-42EE-81A9-5883DB9040DE}
+	EndGlobalSection
+EndGlobal
