@@ -18,6 +18,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-Lambda和LINQ", "07-Lambda和LINQ\07-Lambda和LINQ.csproj", "{6A108D38-966D-4090-A4CB-06B35BAC57CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{7084936A-8202-4AC5-A38A-D35E3E2212B1}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-表达式目录树", "08-表达式目录树\08-表达式目录树.csproj", "{4B7F3108-06A9-4F8E-92AB-02347C6663A6}"
 EndProject
