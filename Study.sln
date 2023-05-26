@@ -31,8 +31,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-表达式目录树", "08
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-表达式目录树2", "09-表达式目录树2\09-表达式目录树2.csproj", "{370BC426-0804-4609-A5DF-A0B4F8C4D282}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-异步编程", "10-异步编程\10-异步编程.csproj", "{4C81FB01-2DB5-4CAC-9204-775C584BB438}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
