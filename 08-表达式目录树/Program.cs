@@ -112,13 +112,15 @@ public class ExpressionGenericMapper<In,Out>
         {
             PropertyInfo inProperty = typeof(In).GetProperty(outProperty.Name)!;
             MemberExpression inPropertyExp = Expression.Property(paraExp, inProperty);
-            memberBindings.Add(Expression.Bind(outProperty, inPropertyExp));
+            MemberBinding binding = Expression.Bind(outProperty, inPropertyExp);
+            memberBindings.Add(binding);
         }
         foreach (FieldInfo outField in typeof(Out).GetFields())
         {
             FieldInfo inField = typeof(In).GetField(outField.Name)!;
             MemberExpression inFieldExp = Expression.Field(paraExp, inField);
-            memberBindings.Add(Expression.Bind(outField, inFieldExp));
+            MemberBinding binding = Expression.Bind(outField, inFieldExp);
+            memberBindings.Add(binding);
         }
 
         NewExpression newExp = Expression.New(typeof(Out));
