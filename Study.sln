@@ -3,6 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{7084936A-8202-4AC5-A38A-D35E3E2212B1}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00-作业", "00-作业\00-作业.csproj", "{77A15A77-D806-48C5-848E-0B5E6C6F63F3}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-泛型", "01-泛型\01-泛型.csproj", "{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-反射", "02-反射\02-反射.csproj", "{56E239CC-A90D-4989-A5FF-7A9597435451}"
@@ -17,19 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-IO和序列化", "06-IO�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-Lambda和LINQ", "07-Lambda和LINQ\07-Lambda和LINQ.csproj", "{6A108D38-966D-4090-A4CB-06B35BAC57CE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{7084936A-8202-4AC5-A38A-D35E3E2212B1}"
-	ProjectSection(SolutionItems) = preProject
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		LICENSE.txt = LICENSE.txt
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-表达式目录树", "08-表达式目录树\08-表达式目录树.csproj", "{4B7F3108-06A9-4F8E-92AB-02347C6663A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00-作业", "00-作业\00-作业.csproj", "{77A15A77-D806-48C5-848E-0B5E6C6F63F3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-表达式目录树2", "09-表达式目录树2\09-表达式目录树2.csproj", "{370BC426-0804-4609-A5DF-A0B4F8C4D282}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-异步和多线程", "10-异步和多线程\10-异步和多线程.csproj", "{E69F52BD-3D26-4331-9994-D851854AE2AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,14 +75,14 @@ Global
 		{4B7F3108-06A9-4F8E-92AB-02347C6663A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B7F3108-06A9-4F8E-92AB-02347C6663A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B7F3108-06A9-4F8E-92AB-02347C6663A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{370BC426-0804-4609-A5DF-A0B4F8C4D282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{370BC426-0804-4609-A5DF-A0B4F8C4D282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{370BC426-0804-4609-A5DF-A0B4F8C4D282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{370BC426-0804-4609-A5DF-A0B4F8C4D282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E69F52BD-3D26-4331-9994-D851854AE2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E69F52BD-3D26-4331-9994-D851854AE2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E69F52BD-3D26-4331-9994-D851854AE2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E69F52BD-3D26-4331-9994-D851854AE2AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
