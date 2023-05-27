@@ -1,4 +1,4 @@
-﻿namespace _16_Log4Net;
+﻿namespace _16_Logging;
 
 internal class Program
 {
