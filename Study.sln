@@ -37,13 +37,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11- 异步和多线程的�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12-多线程的异常与安全以及锁", "12-多线程的异常与安全以及锁\12-多线程的异常与安全以及锁.csproj", "{D341CD92-2188-4371-855F-A1A180EC6C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13-async与await", "13-async与await\13-async与await.csproj", "{704C7407-A1D5-4145-8CFA-A9452B57C4C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "13-async与await", "13-async与await\13-async与await.csproj", "{704C7407-A1D5-4145-8CFA-A9452B57C4C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14-爬虫", "14-爬虫\14-爬虫.csproj", "{46CEA6C2-1B17-451C-A501-2EDE4E968DE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "14-爬虫", "14-爬虫\14-爬虫.csproj", "{46CEA6C2-1B17-451C-A501-2EDE4E968DE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-DotnetSpider", "15-DotnetSpider\15-DotnetSpider.csproj", "{7EBE01A3-E09D-41A2-BB5A-D6BC3280390A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "15-DotnetSpider", "15-DotnetSpider\15-DotnetSpider.csproj", "{7EBE01A3-E09D-41A2-BB5A-D6BC3280390A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16-Log4Net", "16-Log4Net\16-Log4Net.csproj", "{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "16-Log4Net", "16-Log4Net\16-Log4Net.csproj", "{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17-数据库设计优化", "17-数据库设计优化\17-数据库设计优化.csproj", "{C983770F-2E95-4070-962D-F10E0B2538A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,10 @@ Global
 		{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C983770F-2E95-4070-962D-F10E0B2538A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C983770F-2E95-4070-962D-F10E0B2538A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C983770F-2E95-4070-962D-F10E0B2538A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C983770F-2E95-4070-962D-F10E0B2538A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
