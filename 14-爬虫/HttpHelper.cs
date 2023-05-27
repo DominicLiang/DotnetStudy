@@ -9,12 +9,12 @@ namespace _14_爬虫;
 
 internal class HttpHelper
 {
-    public static string DownloadHtml(string url, Encoding encoding)
-    {
-        string html = string.Empty;
-        HttpClient httpClient = new HttpClient();
-        httpClient.Timeout = new TimeSpan(0,0,30);
-        httpClient.BaseAddress = new Uri(url);
+    //public static string DownloadHtml(string url, Encoding encoding)
+    //{
+    //    string html = string.Empty;
+    //    HttpClient httpClient = new HttpClient();
+    //    httpClient.Timeout = new TimeSpan(0,0,30);
+    //    httpClient.BaseAddress = new Uri(url);
         
-    }
+    //}
 }
