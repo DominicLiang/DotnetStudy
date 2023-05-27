@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13-async与await", "13-asyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14-爬虫", "14-爬虫\14-爬虫.csproj", "{46CEA6C2-1B17-451C-A501-2EDE4E968DE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15-DotnetSpider", "15-DotnetSpider\15-DotnetSpider.csproj", "{7EBE01A3-E09D-41A2-BB5A-D6BC3280390A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16-Log4Net", "16-Log4Net\16-Log4Net.csproj", "{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +111,14 @@ Global
 		{46CEA6C2-1B17-451C-A501-2EDE4E968DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46CEA6C2-1B17-451C-A501-2EDE4E968DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46CEA6C2-1B17-451C-A501-2EDE4E968DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EBE01A3-E09D-41A2-BB5A-D6BC3280390A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EBE01A3-E09D-41A2-BB5A-D6BC3280390A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EBE01A3-E09D-41A2-BB5A-D6BC3280390A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EBE01A3-E09D-41A2-BB5A-D6BC3280390A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723D2C5C-8422-43C5-9D1D-3A6C0FE45D69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
