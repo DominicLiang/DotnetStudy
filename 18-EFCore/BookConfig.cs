@@ -24,5 +24,9 @@ class BookConfig : IEntityTypeConfiguration<Book>
         builder.Property(x => x.Description).HasDefaultValue("HelloWrold");// 默认值
         builder.HasIndex(x => x.Title).IsUnique(); // 索引/唯一索引
         builder.HasIndex(x => new { x.Title, x.AuthorName});// 复合索引
+        builder.Property(x => x.PubTime).HasColumnType("DATETIME");
+
+        // 全局查询筛选器
+        builder.HasQueryFilter(a => a.IsDeleted == false);
     }
 }

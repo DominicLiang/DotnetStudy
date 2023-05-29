@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _18_EFCore;
 
@@ -10,9 +11,11 @@ using _18_EFCore;
 namespace _18_EFCore.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    partial class TestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230530060236_000")]
+    partial class _000
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -85,7 +88,7 @@ namespace _18_EFCore.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("T_Cats", (string)null);
+                    b.ToTable("T_Cats");
                 });
 
             modelBuilder.Entity("_18_EFCore.Dog", b =>
@@ -100,7 +103,7 @@ namespace _18_EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dogs", (string)null);
+                    b.ToTable("Dogs");
                 });
 
             modelBuilder.Entity("_18_EFCore.House", b =>
@@ -136,11 +139,12 @@ namespace _18_EFCore.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("LikeNumber")
-                        .IsConcurrencyToken()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("integer");
 
                     b.Property<byte[]>("Timestamp")
+                        .IsConcurrencyToken()
                         .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("BLOB");
 
                     b.HasKey("Id");

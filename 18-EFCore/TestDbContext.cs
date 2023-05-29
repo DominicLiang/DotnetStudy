@@ -1,12 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace _18_EFCore;
 public class TestDbContext : DbContext
 {
+    // 代码显示SQL
+    private static ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
+
     public DbSet<Book> Books { get; set; }
     public DbSet<Person> Persons { get; set; }
     public DbSet<Dog> Dogs { get; set; }
     public DbSet<Cat> Cats { get; set; }
+    public DbSet<House> houses { get; set; }
+    public DbSet<Like> likes { get; set; }
 
     public string DbPath { get; }
 
@@ -21,6 +27,9 @@ public class TestDbContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.UseSqlite($"Data Source={DbPath}");
+
+        // 代码显示SQL
+        optionsBuilder.UseLoggerFactory(loggerFactory);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

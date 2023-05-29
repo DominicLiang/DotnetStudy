@@ -16,4 +16,5 @@ public class Book
     public string director { get; set; }
     public string Description { get; set; }
     public string test { get; set; }
+    public bool IsDeleted { get; set; }
 }

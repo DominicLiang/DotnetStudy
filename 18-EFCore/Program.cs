@@ -14,7 +14,9 @@ namespace _18_EFCore;
 
 // 安装包
 // Microsoft.EntityFrameworkCore.Sqlite 后面带数据库名表示支持哪个数据库
-// Microsoft.EntityFrameworkCore.Tools  对数据迁移回滚的支持
+// Microsoft.EntityFrameworkCore.Tools  数据迁移回滚的控制台命令
+
+// 现在EFCore7.0.5可以支持批量修改和批量删除，但是还没有批量添加
 
 // 使用步骤
 // *创建配置类（可选）配置类继承IEntityTypeConfiguration泛型为数据类类型
@@ -59,13 +61,75 @@ namespace _18_EFCore;
 // 其他命令
 // Scaffold-DbContext 数据库连接 EFCore对应数据库包名     根据已有的数据库生成类
 
-internal class Program
+// 代码查看EFCore生成的SQL语句
+// 看Context类
+
+// 实体间关系
+// 看OneToOne.cs OneToMany.cs ManyToMany.cs
+
+// 执行原生SQL语句
+// 1.执行非查询原生SQL语句
+// dbCtx.Database.ExecuteSqlInterpolatedAsync($"...")
+// 2.实体相关SQL
+// dbCtx.TableName.FromSqlInterpolated($"...")
+// 3.执行任意原生SQL语句
+// ctx.Database.ExecuteSqlRawAsync("");
+
+// 快照更改跟踪
+// 只要一个实体对象和DbContext发生任何关系都默认会被DbContext跟踪
+// DbContext存了关系对象的一个备份，在执行SaveChanges的时候将对象和备份比对
+// 以此识别对象的更改
+// EntityEntry entry=DbCtx.Entry()
+// EntityEntry为DbContext的跟踪类
+// EntityEntry的State属性代表实体对象的状态
+// 通过DebugView.LongView属性可以看到实体的变化信息
+
+// EFCore优化AsNoTracking
+// 只在需要修改的时候才需要跟踪
+// 如果只是查看数据的话，跟踪会耗费内存
+// 所以只查看的时候最好加上AsNoTracking()
+// ctx.Books.AsNoTracking().Where(....)
+
+// 软删除
+// 设置一个IsDeleted列 如果值为true就认为是删除，实际没有真正的删除
+
+// 全局查询筛选器
+// 看BookConfig.cs
+// IgnoreQueryFilters 忽略全局筛选器
+// ctx.books.IgnoreQueryFilters().Where(...)
+
+// 并发控制
+// 悲观策略：
+// 加锁  EFCore没有悲观并发控制的功能
+// 乐观策略：
+// 并发令牌 * 并发令牌推荐用GUID做，每次更新数据时new Guid（）
+// 看LikeConfig.cs
+// 出现并发时会抛DbUpdateConcurrencyException异常
+
+public class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         // Context=逻辑上的数据库
+        // 最好一个请求一个context
+        // 一个service一个context
+        // 多个请求/多线程 要用不同的context
         using (TestDbContext ctx = new TestDbContext())
         {
+            {
+                // 省掉Select语句 不推荐
+                // 强行将属性标识为已修改状态
+                //Book b = new Book() { Id = 1, Price = 2 };
+                //ctx.Entry(b).Property(b => b.Price).IsModified = true;
+                //ctx.SaveChanges();
+            }
+            {
+                // 省掉Select语句 不推荐
+                // 强行将id为1的对象标识为删除
+                //Book b = new Book() { Id = 1 };
+                //ctx.Entry(b).State = EntityState.Deleted;
+                //ctx.SaveChanges();
+            }
             {
                 //// 插入数据
 
@@ -92,12 +156,16 @@ internal class Program
                 //var book = ctx.Books.Single(b => b.Title == "水杯");
                 //Console.WriteLine(book.AuthorName);
 
-                //var result2=from b in ctx.Books
-                //            orderby b.Price descending
-                //            select b;
+                //var result2 = from b in ctx.Books
+                //              orderby b.Price descending
+                //              select new
+                //              {
+                //                  Title = b.Title,
+                //                  Price = b.Price,
+                //              };
                 //foreach (var item in result2)
                 //{
-                //    Console.WriteLine(item.Title+"  "+item.Price);
+                //    Console.WriteLine(item.Title + "  " + item.Price);
                 //}
 
                 //var cat = ctx.Cats.Single(c => c.ID == 1);
@@ -128,6 +196,52 @@ internal class Program
                 //(from b in ctx.Books
                 // where b.Price < 8
                 // select b).ExecuteDeleteAsync();
+            }
+            
+        }
+
+        // 并发控制
+        TestDbContext ctx1 = new TestDbContext();
+        TestDbContext ctx2 = new TestDbContext();
+
+        var l1 = await ctx1.likes.SingleAsync(l => l.Id == 1);
+        var l2 = await ctx2.likes.SingleAsync(l => l.Id == 1);
+
+        try
+        {
+            l1.LikeNumber++;
+            await ctx1.SaveChangesAsync();
+
+            l2.LikeNumber++;
+            await ctx2.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            foreach (var entry in ex.Entries)
+            {
+                if (entry.Entity is Like)
+                {
+                    var proposedValues = entry.CurrentValues;
+                    var databaseValues = entry.GetDatabaseValues();
+
+                    foreach (var property in proposedValues.Properties)
+                    {
+                        var proposedValue = proposedValues[property];
+                        var databaseValue = databaseValues[property];
+
+                        // TODO: decide which value should be written to database
+                        // proposedValues[property] = <value to be saved>;
+                    }
+
+                    // Refresh original values to bypass next concurrency check
+                    entry.OriginalValues.SetValues(databaseValues);
+                }
+                else
+                {
+                    throw new NotSupportedException(
+                        "Don't know how to handle concurrency conflicts for "
+                        + entry.Metadata.Name);
+                }
             }
         }
     }
