@@ -53,8 +53,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "19-依赖注入", "19-依�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20-配置系统", "20-配置系统\20-配置系统.csproj", "{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21-日志系统", "21-日志系统\21-日志系统.csproj", "{9072BCFC-34A9-4E99-9BF0-4A589F0617D4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,10 +143,6 @@ Global
 		{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9072BCFC-34A9-4E99-9BF0-4A589F0617D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9072BCFC-34A9-4E99-9BF0-4A589F0617D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9072BCFC-34A9-4E99-9BF0-4A589F0617D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9072BCFC-34A9-4E99-9BF0-4A589F0617D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
