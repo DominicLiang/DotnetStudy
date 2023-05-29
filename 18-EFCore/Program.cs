@@ -40,6 +40,25 @@ namespace _18_EFCore;
 // 1.DataAnnotation   把配置以特性的形式标注在实体类中  看Dog.cs
 // 2.FluentAPI        把配置写在单独的配置类中         看Books.cs根BookConfig.cs
 
+// 主键
+// 1.自增
+// 2.GUID 不连续 GUID做主键的时候不能把主键作为聚集索引，因为聚集索引使按照顺序保存主键的
+// 3.混合自增和GUID
+// 4.Hi/Lo
+
+// 迁移命令             xxx为迁移名称
+// Update-Database                   更新数据库到最新迁移
+// Update-Database xxx               更新数据库到给定迁移
+// Add-Migration xxx                 增加新的迁移
+// Remove-Migration                  删除上一个迁移
+// Get-Migration                     获取迁移列表
+// Script-Migration                  生成一个从空白数据库到最新迁移的SQL
+// Script-Migration xxx              生成一个从给定迁移到最新迁移的SQL
+// Script-Migration fromxxx toxxx    生成一个从指定迁移到指定迁移的SQL
+
+// 其他命令
+// Scaffold-DbContext 数据库连接 EFCore对应数据库包名     根据已有的数据库生成类
+
 internal class Program
 {
     static void Main(string[] args)
@@ -97,16 +116,15 @@ internal class Program
                 //ctx.SaveChangesAsync();
             }
             {
-                //// 批量修改
+                //// 批量修改 注意批量操作不用SaveChanges
                 //(from b in ctx.Books
                 // where b.Price < 10
                 // select b).ExecuteUpdateAsync(s => s
                 // .SetProperty(b => b.Price, b => b.Price + 1)
                 // .SetProperty(b => b.Title, b => b.Title + " UP"));
-                //ctx.SaveChanges();
             }
             {
-                //// 批量删除
+                //// 批量删除 注意批量操作不用SaveChanges
                 //(from b in ctx.Books
                 // where b.Price < 8
                 // select b).ExecuteDeleteAsync();

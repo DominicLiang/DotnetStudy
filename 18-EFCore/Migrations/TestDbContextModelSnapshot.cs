@@ -82,7 +82,7 @@ namespace _18_EFCore.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("T_Cats");
+                    b.ToTable("T_Cats", (string)null);
                 });
 
             modelBuilder.Entity("_18_EFCore.Dog", b =>
@@ -97,7 +97,7 @@ namespace _18_EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dogs");
+                    b.ToTable("Dogs", (string)null);
                 });
 
             modelBuilder.Entity("_18_EFCore.Person", b =>
