@@ -3,11 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-<<<<<<< HEAD:00-作业/00-作业.csproj
-    <RootNamespace>_00_作业</RootNamespace>
-=======
     <RootNamespace>_16_Logging</RootNamespace>
->>>>>>> Update Study.sln:16-Logging/16-Logging.csproj
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
