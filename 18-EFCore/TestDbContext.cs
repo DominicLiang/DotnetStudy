@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 namespace _18_EFCore;
 public class TestDbContext : DbContext
 {
-    // 代码显示SQL
+    // 代码显示SQL 控制台日志
     private static ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
 
     public DbSet<Book> Books { get; set; }

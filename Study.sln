@@ -49,9 +49,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "17-数据库设计优化", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "18-EFCore", "18-EFCore\18-EFCore.csproj", "{913569A3-ADA6-4864-83C0-E7F5E6957F28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "19-依赖注入", "19-依赖注入\19-依赖注入.csproj", "{FA6C32CF-0BF4-43F2-A4A4-82AED98C0F49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "19-依赖注入", "19-依赖注入\19-依赖注入.csproj", "{FA6C32CF-0BF4-43F2-A4A4-82AED98C0F49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20-配置系统", "20-配置系统\20-配置系统.csproj", "{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20-配置系统", "20-配置系统\20-配置系统.csproj", "{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
