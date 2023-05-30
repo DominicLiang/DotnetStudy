@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "19-依赖注入", "19-依�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20-配置系统", "20-配置系统\20-配置系统.csproj", "{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21-C#最近的新语法", "21-C#最近的新语法\21-C#最近的新语法.csproj", "{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
