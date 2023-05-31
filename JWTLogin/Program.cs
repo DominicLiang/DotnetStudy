@@ -1,9 +1,12 @@
 using JWTLogin;
 using JWTLogin.Data;
+using JWTLogin.Filters;
 using JWTLogin.JWTService;
+using JWTLogin.Middleware;
 using JWTLogin.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -17,6 +20,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<MvcOptions>(opt =>
+{
+    opt.Filters.Add<JWTValidationFilter>();
+    opt.Filters.Add<JWTRefreshFilter>();
+});
 
 builder.Services.AddScoped<IJWTService, JWTService>();
 
@@ -83,16 +92,45 @@ builder.Services.AddScoped<IJWTService, JWTService>();
                         var secKey = new SymmetricSecurityKey(bytes);
                         opt.TokenValidationParameters = new()
                         {
-                            ValidateIssuer = false,
-                            ValidateAudience = false,
-                            ValidateLifetime = true,
+                            // 验证密钥
                             ValidateIssuerSigningKey = true,
-                            IssuerSigningKey = secKey
+                            IssuerSigningKey = secKey,
+
+                            // 验证发行人
+                            ValidateIssuer = true,
+                            ValidIssuer = "issuer",
+
+                            // 验证订阅人
+                            ValidateAudience = false,
+                            ValidAudience = "audience",
+
+                            // 验证过期时间和生命周期
+                            RequireExpirationTime = true,
+                            ValidateLifetime = true,
+
                         };
                     });
 }
 
+{
+    // 跨域Cors 使服务端接受这个客户端的请求
+    builder.Services.AddCors(opt =>
+    {
+        opt.AddDefaultPolicy(b =>
+        {
+            b.WithOrigins(new string[] { "http://localhost:5173" })
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
+        });
+    });
+}
+
 var app = builder.Build();
+
+{
+    app.UseCors();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -101,10 +139,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+//app.UseJWTRefresh();
 
 app.MapControllers();
 

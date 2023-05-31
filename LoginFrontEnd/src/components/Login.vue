@@ -1,0 +1,68 @@
+<script setup>
+import { ref } from 'vue'
+import httpInstance from '../utils/http'
+
+const data = ref({
+  username: '',
+  password: ''
+})
+
+const isCanLogin = ref(false)
+
+const Submit = () => {
+  const res = httpInstance.request({
+    url: '/Login',
+    method: 'POST',
+    params: {
+      username:data.value.username,
+      password:data.value.password
+    }
+  })
+  res
+    .then((value) => {
+      isCanLogin.value = false
+      console.log(value)
+    })
+    .catch((error) => {
+      isCanLogin.value = true
+    })
+}
+</script>
+
+<template>
+  <span v-show="isCanLogin">账号或密码错误！</span>
+  <form>
+    <div class="input">
+      <div>
+        <span class="label">用户名：</span>
+        <input type="text" v-model="data.username" />
+      </div>
+      <div>
+        <span class="label">密码：</span>
+        <input type="text" v-model="data.password" />
+      </div>
+    </div>
+    <a class="btn" @click="Submit">登录</a>
+  </form>
+</template>
+
+<style scoped>
+.label {
+  display: inline-block;
+  width: 70px;
+}
+.input {
+  width: 300px;
+  height: 90px;
+  padding: 20px;
+  background-color: rgb(37, 37, 37);
+}
+.btn {
+  display: block;
+  width: 300px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+</style>

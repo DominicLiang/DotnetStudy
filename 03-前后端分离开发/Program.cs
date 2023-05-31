@@ -14,6 +14,7 @@ builder.Services.AddCors(opt =>
     {
         b.WithOrigins(new string[] 
         {
+            // 大坑 链接后面不能加/斜杠
             "http://localhost:5173"
         })
         .AllowAnyMethod()
@@ -24,6 +25,11 @@ builder.Services.AddCors(opt =>
 
 var app = builder.Build();
 
+{
+    // 使服务端接受这个客户端的请求
+    app.UseCors();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -31,7 +37,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();// 使服务端接受这个客户端的请求
+
 
 app.UseHttpsRedirection();
 

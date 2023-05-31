@@ -16,7 +16,7 @@ public class JWTService : IJWTService
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SecKey));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
-        var tokenDescriptor = new JwtSecurityToken(options.issuer, options.audience, claims, DateTime.Now, expires, credentials);
+        var tokenDescriptor = new JwtSecurityToken(options.Issuer, options.Audience, claims, DateTime.Now, expires, credentials);
 
         return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
     }
