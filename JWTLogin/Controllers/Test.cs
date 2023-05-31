@@ -106,13 +106,16 @@ public class Test : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Logout(string username)
+    [Authorize]
+    public async Task<IActionResult> Logout()
     {
-        var user = await _userManager.FindByNameAsync(username);
+        Console.WriteLine("***********In***********");
+        var user = await _userManager.FindByNameAsync(User.Identity?.Name);
         if (user != null)
         {
             user.Token = string.Empty;
             await _userManager.UpdateAsync(user);
+            Console.WriteLine("***********OK***********");
             return Ok();
         }
         return Unauthorized();

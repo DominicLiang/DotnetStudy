@@ -21,6 +21,7 @@ export const connectionStore = defineStore(
         .withAutomaticReconnect()
         .build()
       await connection.value.start()
+      
     }
 
     return {

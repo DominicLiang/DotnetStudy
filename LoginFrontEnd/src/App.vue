@@ -6,15 +6,12 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const logout = async () => {
-  const userStore = useUserStore()
-  userStore.token = null
   await httpInstance.request({
     method: 'POST',
     url: '/Logout',
-    params: {
-      username: userStore.username
-    }
   })
+  const userStore = useUserStore()
+  userStore.token = null
   router.push('/login')
 }
 </script>
