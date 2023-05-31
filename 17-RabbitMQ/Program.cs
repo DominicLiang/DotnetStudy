@@ -7,7 +7,6 @@ var connFactory = new ConnectionFactory();
 connFactory.HostName = "localhost";
 connFactory.DispatchConsumersAsync = true;
 var conn = connFactory.CreateConnection();
-string exchangeName = "exchange1";
 while (true)
 {
     string msg = DateTime.Now.TimeOfDay.ToString();

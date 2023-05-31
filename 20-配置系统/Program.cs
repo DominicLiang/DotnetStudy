@@ -34,48 +34,48 @@ internal class Program
         // 创建根节点
         IConfigurationRoot configRoot = builder.Build();
 
+        //{
+        //    // 映射类的做法  简单快捷
+        //    Config config = configRoot.Get<Config>()!;
+        //    Console.WriteLine(config.Name);
+        //    Console.WriteLine(config.Age);
+        //    Console.WriteLine(config.Proxy.Address);
+        //    Console.WriteLine(config.Proxy.Port);
+        //}
         {
-            // 映射类的做法  简单快捷
-            Config config = configRoot.Get<Config>()!;
-            Console.WriteLine(config.Name);
-            Console.WriteLine(config.Age);
-            Console.WriteLine(config.Proxy.Address);
-            Console.WriteLine(config.Proxy.Port);
-        }
-        {
-            //// DI
-            //ServiceCollection services = new ServiceCollection();
-            //services.AddScoped<TestController>();
+            // DI
+            ServiceCollection services = new ServiceCollection();
+            services.AddScoped<TestController>();
 
-            //// !!!! 
-            //services.AddOptions().Configure<Config>(e => configRoot.Bind(e));
+            // !!!! 
+            services.Configure<Config>(e => configRoot.Bind(e));
 
-            //using (ServiceProvider sp = services.BuildServiceProvider())
-            //{
-            //    using (var scope = sp.CreateScope())
-            //    {
-            //        var testController = scope.ServiceProvider.GetRequiredService<TestController>();
-            //        testController.Test();
-            //    }
-            //}
+            using (ServiceProvider sp = services.BuildServiceProvider())
+            {
+                using (var scope = sp.CreateScope())
+                {
+                    var testController = scope.ServiceProvider.GetRequiredService<TestController>();
+                    testController.Test();
+                }
+            }
         }
     }
 }
 
-//class TestController
-//{
-//    private readonly IOptionsSnapshot<Config> optConfig;
+class TestController
+{
+    private readonly IOptionsSnapshot<Config> optConfig;
 
-//    public TestController(IOptionsSnapshot<Config> optConfig)
-//    {
-//        this.optConfig = optConfig;
-//    }
+    public TestController(IOptionsSnapshot<Config> optConfig)
+    {
+        this.optConfig = optConfig;
+    }
 
-//    public void Test()
-//    {
-//        Config config = optConfig.Value;
-//        Console.WriteLine(config.Age);
-//        Console.WriteLine(string.Join(",", config.Proxy.Ids));
-//    }
-//}
+    public void Test()
+    {
+        Config config = optConfig.Value;
+        Console.WriteLine(config.Age);
+        Console.WriteLine(string.Join(",", config.Proxy.Ids));
+    }
+}
 
