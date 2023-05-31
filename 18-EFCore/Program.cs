@@ -197,50 +197,53 @@ public class Program
                 // where b.Price < 8
                 // select b).ExecuteDeleteAsync();
             }
-            
+
         }
 
-        // 并发控制
-        TestDbContext ctx1 = new TestDbContext();
-        TestDbContext ctx2 = new TestDbContext();
 
-        var l1 = await ctx1.likes.SingleAsync(l => l.Id == 1);
-        var l2 = await ctx2.likes.SingleAsync(l => l.Id == 1);
-
-        try
         {
-            l1.LikeNumber++;
-            await ctx1.SaveChangesAsync();
+            // 并发控制
+            TestDbContext ctx1 = new TestDbContext();
+            TestDbContext ctx2 = new TestDbContext();
 
-            l2.LikeNumber++;
-            await ctx2.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException ex)
-        {
-            foreach (var entry in ex.Entries)
+            var l1 = await ctx1.likes.SingleAsync(l => l.Id == 1);
+            var l2 = await ctx2.likes.SingleAsync(l => l.Id == 1);
+
+            try
             {
-                if (entry.Entity is Like)
-                {
-                    var proposedValues = entry.CurrentValues;
-                    var databaseValues = entry.GetDatabaseValues();
+                l1.LikeNumber++;
+                await ctx1.SaveChangesAsync();
 
-                    foreach (var property in proposedValues.Properties)
+                l2.LikeNumber++;
+                await ctx2.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                foreach (var entry in ex.Entries)
+                {
+                    if (entry.Entity is Like)
                     {
-                        var proposedValue = proposedValues[property];
-                        var databaseValue = databaseValues[property];
+                        var proposedValues = entry.CurrentValues;
+                        var databaseValues = entry.GetDatabaseValues();
 
-                        // TODO: decide which value should be written to database
-                        // proposedValues[property] = <value to be saved>;
+                        foreach (var property in proposedValues.Properties)
+                        {
+                            var proposedValue = proposedValues[property];
+                            var databaseValue = databaseValues[property];
+
+                            // TODO: decide which value should be written to database
+                            // proposedValues[property] = <value to be saved>;
+                        }
+
+                        // Refresh original values to bypass next concurrency check
+                        entry.OriginalValues.SetValues(databaseValues);
                     }
-
-                    // Refresh original values to bypass next concurrency check
-                    entry.OriginalValues.SetValues(databaseValues);
-                }
-                else
-                {
-                    throw new NotSupportedException(
-                        "Don't know how to handle concurrency conflicts for "
-                        + entry.Metadata.Name);
+                    else
+                    {
+                        throw new NotSupportedException(
+                            "Don't know how to handle concurrency conflicts for "
+                            + entry.Metadata.Name);
+                    }
                 }
             }
         }

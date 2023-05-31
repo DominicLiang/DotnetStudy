@@ -13,6 +13,7 @@ public class TestDbContext : DbContext
     public DbSet<Cat> Cats { get; set; }
     public DbSet<House> houses { get; set; }
     public DbSet<Like> likes { get; set; }
+    public DbSet<Shop> shops { get; set; }
 
     public string DbPath { get; }
 

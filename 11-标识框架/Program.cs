@@ -23,45 +23,46 @@ builder.Services.AddSwaggerGen();
 
 {
     // 6.向依赖注入容器中注册标识框架相关服务
-builder.Services.AddDbContext<MyDbContext>(opt =>
-{
-var folder = Environment.SpecialFolder.DesktopDirectory;
-string path = Environment.GetFolderPath(folder);
-string DbPath = Path.Join(path, "TestDB.db");
-opt.UseSqlite($"Data Source={DbPath}");
-});
-
-{
-    // 6.向依赖注入容器中注册标识框架相关服务
-    builder.Services.AddDataProtection();
-    builder.Services.AddIdentityCore<MyUser>(options =>
+    builder.Services.AddDbContext<MyDbContext>(opt =>
     {
-        options.Password.RequireNonAlphanumeric = false;
-        options.Password.RequiredLength = 8;
-        options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultEmailProvider;
-        options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+        var folder = Environment.SpecialFolder.DesktopDirectory;
+        string path = Environment.GetFolderPath(folder);
+        string DbPath = Path.Join(path, "TestDB.db");
+        opt.UseSqlite($"Data Source={DbPath}");
     });
-    IdentityBuilder idBuilder = new IdentityBuilder(typeof(MyUser), typeof(MyRole), builder.Services);
-    idBuilder.AddEntityFrameworkStores<MyDbContext>()
-             .AddDefaultTokenProviders()
-             .AddUserManager<UserManager<MyUser>>()
-             .AddRoleManager<RoleManager<MyRole>>();
+
+    {
+        // 6.向依赖注入容器中注册标识框架相关服务
+        builder.Services.AddDataProtection();
+        builder.Services.AddIdentityCore<MyUser>(options =>
+        {
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequiredLength = 8;
+            options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultEmailProvider;
+            options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+        });
+        IdentityBuilder idBuilder = new IdentityBuilder(typeof(MyUser), typeof(MyRole), builder.Services);
+        idBuilder.AddEntityFrameworkStores<MyDbContext>()
+                 .AddDefaultTokenProviders()
+                 .AddUserManager<UserManager<MyUser>>()
+                 .AddRoleManager<RoleManager<MyRole>>();
+    }
+
+
+    var app = builder.Build();
+
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseHttpsRedirection();
+
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    app.Run();
 }
-
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

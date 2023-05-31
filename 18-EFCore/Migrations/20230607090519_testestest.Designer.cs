@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _18_EFCore;
 
@@ -10,9 +11,11 @@ using _18_EFCore;
 namespace _18_EFCore.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    partial class TestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230607090519_testestest")]
+    partial class testestest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -103,6 +106,23 @@ namespace _18_EFCore.Migrations
                     b.ToTable("Dogs");
                 });
 
+            modelBuilder.Entity("_18_EFCore.Geo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Geo");
+                });
+
             modelBuilder.Entity("_18_EFCore.House", b =>
                 {
                     b.Property<long>("Id")
@@ -183,38 +203,29 @@ namespace _18_EFCore.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<long>("LoactionId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LoactionId");
+
                     b.ToTable("shops");
                 });
 
             modelBuilder.Entity("_18_EFCore.Shop", b =>
                 {
-                    b.OwnsOne("_18_EFCore.Geo", "Loaction", b1 =>
-                        {
-                            b1.Property<long>("ShopId")
-                                .HasColumnType("INTEGER");
-
-                            b1.Property<double>("Latitude")
-                                .HasColumnType("REAL");
-
-                            b1.Property<double>("Longitude")
-                                .HasColumnType("REAL");
-
-                            b1.HasKey("ShopId");
-
-                            b1.ToTable("shops");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ShopId");
-                        });
-
-                    b.Navigation("Loaction")
+                    b.HasOne("_18_EFCore.Geo", "Loaction")
+                        .WithMany()
+                        .HasForeignKey("LoactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Loaction");
                 });
 #pragma warning restore 612, 618
         }
