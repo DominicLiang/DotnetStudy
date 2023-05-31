@@ -177,8 +177,6 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-//app.UseJWTRefresh();
-
 app.MapControllers();
 
 app.Run();
