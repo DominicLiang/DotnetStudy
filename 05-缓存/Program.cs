@@ -7,6 +7,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMemoryCache();
+
+// 注册redis服务
+builder.Services.AddStackExchangeRedisCache(opt =>
+{
+    opt.Configuration = "localhost";
+    opt.InstanceName = "cache";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +29,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+// 服务器端响应缓存 必须在MapControllers之前 不推荐用
+app.UseResponseCaching();
 app.MapControllers();
 
 app.Run();
