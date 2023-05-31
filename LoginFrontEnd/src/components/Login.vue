@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import httpInstance from '../utils/http'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const data = ref({
   username: '',
@@ -14,14 +17,14 @@ const Submit = () => {
     url: '/Login',
     method: 'POST',
     params: {
-      username:data.value.username,
-      password:data.value.password
+      username: data.value.username,
+      password: data.value.password
     }
   })
   res
     .then((value) => {
       isCanLogin.value = false
-      console.log(value)
+      router.replace({ path: '/' })
     })
     .catch((error) => {
       isCanLogin.value = true
