@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 // 引入中间件
-app.Map("/test", async (pipeBuilder) =>
+app.Map("/test", (pipeBuilder) =>
 {
     pipeBuilder.UseMiddleware<CheckMiddleware>();
     pipeBuilder.Run(async context =>

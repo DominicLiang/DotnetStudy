@@ -39,6 +39,7 @@ public class DemoController : ControllerBase
         if (user1 == null)
         {
             user1 = new MyUser() { UserName = "yzk", Email = "dominic1987@foxmail.com" };
+
             var result = userManager.CreateAsync(user1, "JASIjfidc123");
             if (!result.IsCompletedSuccessfully) return BadRequest("Create User Failed");
         }
@@ -46,7 +47,7 @@ public class DemoController : ControllerBase
         {
             await userManager.AddToRoleAsync(user1, "admin");
         }
-        
+
         return "OK";
     }
 

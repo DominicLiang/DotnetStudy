@@ -9,10 +9,8 @@ var connFactory = new ConnectionFactory();
 connFactory.HostName = "localhost";
 connFactory.DispatchConsumersAsync = true;
 var conn = connFactory.CreateConnection();
-string exchangeName = "exchange1";
-string eventName = "myEvent";
 using var channel = conn.CreateModel();
-string queueName = "queue1";
+
 channel.ExchangeDeclare(exchange: exchangeName, type: "direct");
 channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
 channel.QueueBind(queue: queueName, exchange: exchangeName, routingKey: eventName);
