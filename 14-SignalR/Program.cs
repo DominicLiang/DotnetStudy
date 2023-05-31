@@ -1,3 +1,12 @@
+
+// SignalR
+// .NET Core下对WebSocket的封装
+
+
+
+using _14_SignalR;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,20 +16,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 跨域Cors 使服务端接受这个客户端的请求
-builder.Services.AddCors(opt =>
 {
-    opt.AddDefaultPolicy(b =>
+    builder.Services.AddSignalR();
+
+    string[] urls = new[] { "http://localhost:5173" };
+    builder.Services.AddCors(options =>
     {
-        b.WithOrigins(new string[] 
-        {
-            "http://localhost:5173"
-        })
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials();
+        options.AddDefaultPolicy(b => b.WithOrigins(urls)
+                                       .AllowAnyMethod()
+                                       .AllowAnyHeader()
+                                       .AllowCredentials());
     });
-});//
+}
+
+
+
+
 
 var app = builder.Build();
 
@@ -31,11 +42,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();// 使服务端接受这个客户端的请求
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+{
+    app.MapHub<MyHub>("/MyHub");
+
+    app.UseCors();
+}
 
 app.MapControllers();
 

@@ -1,3 +1,5 @@
+using _13_托管服务;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,31 +9,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 跨域Cors 使服务端接受这个客户端的请求
-builder.Services.AddCors(opt =>
-{
-    opt.AddDefaultPolicy(b =>
-    {
-        b.WithOrigins(new string[] 
-        {
-            "http://localhost:5173"
-        })
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials();
-    });
-});//
+builder.Services.AddHostedService<HostedService1>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{
+{ 
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseCors();// 使服务端接受这个客户端的请求
 
 app.UseHttpsRedirection();
 
