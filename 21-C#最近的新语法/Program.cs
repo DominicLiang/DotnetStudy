@@ -1,4 +1,6 @@
-﻿// 顶级语句 c# 9
+﻿Console.WriteLine("helloworld");
+
+// 顶级语句 c# 9
 // 一个项目只能有一个文件是使用顶级语句
 
 // 全局using c# 10
