@@ -11,12 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		README.md = README.md
 	EndProjectSection
 EndProject
-
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET", ".NET", "{93060A2E-7F93-4205-9229-937C537D6BA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET", "ASP.NET", "{613355D0-3AC0-4FA1-90A1-B1AAC4288227}"
 EndProject
-
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-泛型", "01-泛型\01-泛型.csproj", "{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-反射", "02-反射\02-反射.csproj", "{56E239CC-A90D-4989-A5FF-7A9597435451}"
@@ -57,19 +55,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "19-依赖注入", "19-依�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20-配置系统", "20-配置系统\20-配置系统.csproj", "{419A1D2C-6451-4D13-9C6F-77D9396E7AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21-C#最近的新语法", "21-C#最近的新语法\21-C#最近的新语法.csproj", "{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "21-C#最近的新语法", "21-C#最近的新语法\21-C#最近的新语法.csproj", "{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}"
 EndProject
-
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-ASP.NET MVC", "01-ASP.NET MVC\01-ASP.NET MVC.csproj", "{F85DF161-A449-4583-BADD-756B15601483}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77A15A77-D806-48C5-848E-0B5E6C6F63F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -154,10 +149,10 @@ Global
 		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12194E49-C2AD-4990-B4CD-5A80EB86F574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12194E49-C2AD-4990-B4CD-5A80EB86F574}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12194E49-C2AD-4990-B4CD-5A80EB86F574}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12194E49-C2AD-4990-B4CD-5A80EB86F574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F85DF161-A449-4583-BADD-756B15601483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F85DF161-A449-4583-BADD-756B15601483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F85DF161-A449-4583-BADD-756B15601483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F85DF161-A449-4583-BADD-756B15601483}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,7 +179,7 @@ Global
 		{FA6C32CF-0BF4-43F2-A4A4-82AED98C0F49} = {93060A2E-7F93-4205-9229-937C537D6BA7}
 		{419A1D2C-6451-4D13-9C6F-77D9396E7AB7} = {93060A2E-7F93-4205-9229-937C537D6BA7}
 		{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13} = {93060A2E-7F93-4205-9229-937C537D6BA7}
-		{12194E49-C2AD-4990-B4CD-5A80EB86F574} = {613355D0-3AC0-4FA1-90A1-B1AAC4288227}
+		{F85DF161-A449-4583-BADD-756B15601483} = {613355D0-3AC0-4FA1-90A1-B1AAC4288227}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F2B484C-B267-42EE-81A9-5883DB9040DE}
