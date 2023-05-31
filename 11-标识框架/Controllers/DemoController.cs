@@ -46,6 +46,7 @@ public class DemoController : ControllerBase
         {
             await userManager.AddToRoleAsync(user1, "admin");
         }
+        
         return "OK";
     }
 

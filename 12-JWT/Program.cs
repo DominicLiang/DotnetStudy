@@ -50,13 +50,14 @@ builder.Services.AddSwaggerGen();
         .AddJwtBearer(opt =>
     {
         var JwtOptions = builder.Configuration.GetSection("JWT").Get<JWTOptions>();
-        byte[] keyBytes = Encoding.UTF8.GetBytes(JwtOptions.SecKey);
-        var secKey = new SymmetricSecurityKey(keyBytes);
+        Console.WriteLine(JwtOptions.SecKey);
+        var secKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtOptions.SecKey));
         opt.TokenValidationParameters = new()
         {
             ValidateIssuer = false,
             ValidateAudience = false,
             ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
             IssuerSigningKey = secKey
         };
     });
@@ -75,7 +76,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
 {
+    //!!!!!!!!!!!!!!!!
     app.UseAuthentication();
 }
 

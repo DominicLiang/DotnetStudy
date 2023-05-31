@@ -32,6 +32,7 @@ builder.Services.AddDbContext<MyDbContext>(opt =>
     opt.UseSqlite($"Data Source={DbPath}");
 });
 
+
 // Add services to the container.
 
 builder.Services.AddControllers();

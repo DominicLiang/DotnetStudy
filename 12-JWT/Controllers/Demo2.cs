@@ -17,15 +17,16 @@ namespace _12_JWT.Controllers
         public Demo2(IOptionsSnapshot<JWTOptions> jwtSetting)
         {
             this.jwtSetting = jwtSetting;
+            Console.WriteLine(jwtSetting.Value.SecKey);
         }
 
         [HttpPost]
-        public ActionResult<string> Login(string userName, string password)
+        public ActionResult Login(string userName, string password)
         {
             if (userName == "yzk" || password == "123")
             {
-                string jwt = JWTCreater("yjk", new string[] { "" }, jwtSetting.Value.SecKey);
-                return jwt;
+                string jwt = JWTCreater("yjk", new string[] { "admin" }, jwtSetting.Value.SecKey);
+                return Ok(jwt);
             }
             else
             {
@@ -34,8 +35,10 @@ namespace _12_JWT.Controllers
         }
         private string JWTCreater(string userName, string[] roles, string key)
         {
-            List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, userName));
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.Name, userName)
+            };
             foreach (string role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));

@@ -7,6 +7,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+
 builder.Services.AddMemoryCache();
 
 // ×¢²áredis·þÎñ
@@ -15,6 +18,9 @@ builder.Services.AddStackExchangeRedisCache(opt =>
     opt.Configuration = "localhost";
     opt.InstanceName = "cache";
 });
+
+
+
 
 var app = builder.Build();
 
