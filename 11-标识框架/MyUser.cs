@@ -4,5 +4,5 @@ namespace _11_标识框架;
 
 public class MyUser : IdentityUser<long>
 {
-
+    public string? WeiXinAccount { get; set; }
 }

@@ -23,13 +23,16 @@ builder.Services.AddSwaggerGen();
 
 {
     // 6.向依赖注入容器中注册标识框架相关服务
-    builder.Services.AddDbContext<MyDbContext>(opt =>
-    {
-        var folder = Environment.SpecialFolder.DesktopDirectory;
-        string path = Environment.GetFolderPath(folder);
-        string DbPath = Path.Join(path, "TestDB.db");
-        opt.UseSqlite($"Data Source={DbPath}");
-    });
+builder.Services.AddDbContext<MyDbContext>(opt =>
+{
+var folder = Environment.SpecialFolder.DesktopDirectory;
+string path = Environment.GetFolderPath(folder);
+string DbPath = Path.Join(path, "TestDB.db");
+opt.UseSqlite($"Data Source={DbPath}");
+});
+
+{
+    // 6.向依赖注入容器中注册标识框架相关服务
     builder.Services.AddDataProtection();
     builder.Services.AddIdentityCore<MyUser>(options =>
     {

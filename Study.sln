@@ -69,17 +69,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-缓存", "05-缓存\05-�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-ASP.NET的配置系统", "06-ASP.NET的配置系统\06-ASP.NET的配置系统.csproj", "{A6E3A051-C7FF-4E4B-ACE9-BD7D93DB262A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-分层项目中EFCore用法", "07-分层项目中EFCore用法\07-分层项目中EFCore用法.csproj", "{40B0E893-B832-4D85-A986-CF6E38EAC4E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-分层项目中EFCore用法", "07-分层项目中EFCore用法\07-分层项目中EFCore用法.csproj", "{40B0E893-B832-4D85-A986-CF6E38EAC4E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreBooks", "EFCoreBooks\EFCoreBooks.csproj", "{3F8FD966-1A0E-429A-A485-32BAD13B95DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreBooks", "EFCoreBooks\EFCoreBooks.csproj", "{3F8FD966-1A0E-429A-A485-32BAD13B95DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-ASP.NET筛选器", "08-ASP.NET筛选器\08-ASP.NET筛选器.csproj", "{035AD242-F7E8-4524-A430-A65085C7D6A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08-ASP.NET筛选器", "08-ASP.NET筛选器\08-ASP.NET筛选器.csproj", "{035AD242-F7E8-4524-A430-A65085C7D6A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09-ASP.NET中间件", "09-ASP.NET中间件\09-ASP.NET中间件.csproj", "{A6DBC98A-F831-469E-A2C6-87C68FB231AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "09-ASP.NET中间件", "09-ASP.NET中间件\09-ASP.NET中间件.csproj", "{A6DBC98A-F831-469E-A2C6-87C68FB231AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-ASP.NET中的日志", "10-ASP.NET中的日志\10-ASP.NET中的日志.csproj", "{CC48CE31-2CAE-4FDE-97B2-EA08C73A205E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10-ASP.NET中的日志", "10-ASP.NET中的日志\10-ASP.NET中的日志.csproj", "{CC48CE31-2CAE-4FDE-97B2-EA08C73A205E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11-标识框架", "11-标识框架\11-标识框架.csproj", "{FC64171C-9AC0-405D-80E5-A1B88C4D69E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11-标识框架", "11-标识框架\11-标识框架.csproj", "{FC64171C-9AC0-405D-80E5-A1B88C4D69E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12-JWT", "12-JWT\12-JWT.csproj", "{FD02FE51-A968-49B2-8C6C-F50F78C7C815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -219,6 +221,10 @@ Global
 		{FC64171C-9AC0-405D-80E5-A1B88C4D69E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC64171C-9AC0-405D-80E5-A1B88C4D69E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC64171C-9AC0-405D-80E5-A1B88C4D69E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD02FE51-A968-49B2-8C6C-F50F78C7C815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD02FE51-A968-49B2-8C6C-F50F78C7C815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD02FE51-A968-49B2-8C6C-F50F78C7C815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD02FE51-A968-49B2-8C6C-F50F78C7C815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -257,6 +263,7 @@ Global
 		{A6DBC98A-F831-469E-A2C6-87C68FB231AF} = {613355D0-3AC0-4FA1-90A1-B1AAC4288227}
 		{CC48CE31-2CAE-4FDE-97B2-EA08C73A205E} = {613355D0-3AC0-4FA1-90A1-B1AAC4288227}
 		{FC64171C-9AC0-405D-80E5-A1B88C4D69E9} = {613355D0-3AC0-4FA1-90A1-B1AAC4288227}
+		{FD02FE51-A968-49B2-8C6C-F50F78C7C815} = {613355D0-3AC0-4FA1-90A1-B1AAC4288227}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F2B484C-B267-42EE-81A9-5883DB9040DE}
