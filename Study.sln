@@ -61,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ASP.NET MVC", "01-ASP.NE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-WebAPI入门", "02-WebAPI入门\02-WebAPI入门.csproj", "{EABEF4F3-A0C0-472B-B0CB-DC315BC744E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-前后端分离开发", "03-前后端分离开发\03-前后端分离开发.csproj", "{1D8FC96E-4B14-443B-8C91-4CDF72523878}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-前后端分离开发", "03-前后端分离开发\03-前后端分离开发.csproj", "{1D8FC96E-4B14-443B-8C91-4CDF72523878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

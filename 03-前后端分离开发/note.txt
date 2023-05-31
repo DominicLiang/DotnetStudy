@@ -1,0 +1,6 @@
+﻿Vue搭建步骤：
+1.安装Node.js
+2.设定国内镜像 npm config set registry https://registry.npm.taobao.org
+3.安装yarn：npm install -g yarn
+4.创建Vue项目：yarn create vite xxx
+5.按照提示运行项目
