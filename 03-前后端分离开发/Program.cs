@@ -26,6 +26,7 @@ builder.Services.AddCors(opt =>
 var app = builder.Build();
 
 {
+    // !!! UseHttpsRedirection 必须在这个之前注册
     // 使服务端接受这个客户端的请求
     app.UseCors();
 }
