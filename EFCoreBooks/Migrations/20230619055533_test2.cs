@@ -2,28 +2,28 @@
 
 #nullable disable
 
-namespace JWTLogin.Migrations
+namespace EFCoreBooks.Migrations
 {
     /// <inheritdoc />
-    public partial class token : Migration
+    public partial class test2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Token",
-                table: "AspNetUsers",
-                type: "TEXT",
+            migrationBuilder.AddColumn<long>(
+                name: "PeopleId",
+                table: "T_Books",
+                type: "INTEGER",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: 0L);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Token",
-                table: "AspNetUsers");
+                name: "PeopleId",
+                table: "T_Books");
         }
     }
 }

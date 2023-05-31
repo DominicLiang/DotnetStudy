@@ -11,6 +11,7 @@ namespace EFCoreBooks;
 public class MyDbContext : DbContext
 {
     public DbSet<Book> Books { get; set; }
+    public DbSet<People> Peoples { get; set; }
 
     public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
     {

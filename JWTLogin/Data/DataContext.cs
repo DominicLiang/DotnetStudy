@@ -10,4 +10,12 @@ public class DataContext : IdentityDbContext<User, Role, Guid>
     {
 
     }
+
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        //从当前程序集加载所有的IEntityTypeConfiguration
+        modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+    }
 }

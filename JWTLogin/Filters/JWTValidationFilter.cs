@@ -1,4 +1,4 @@
-﻿using JWTLogin.Migrations;
+﻿
 using JWTLogin.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,5 @@
 using JWTLogin;
+using JWTLogin.Controllers;
 using JWTLogin.Data;
 using JWTLogin.Filters;
 using JWTLogin.JWTService;
@@ -40,10 +41,9 @@ builder.Services.AddScoped<IJWTService, JWTService>();
 {
     builder.Services.AddDbContext<DataContext>(opt =>
     {
-        var folder = Environment.SpecialFolder.DesktopDirectory;
-        string path = Environment.GetFolderPath(folder);
-        string DbPath = Path.Join(path, "TestDB.db");
-        opt.UseSqlite($"Data Source={DbPath}");
+        string connStr = "data source=localhost;database=test;user id=root;password=root;pooling=true;charset=utf8;";
+        var serverVesion = ServerVersion.AutoDetect(connStr);
+        opt.UseMySql(connStr, serverVesion);
     });
 
     // 6.向依赖注入容器中注册标识框架相关服务
@@ -57,7 +57,10 @@ builder.Services.AddScoped<IJWTService, JWTService>();
         options.Password.RequiredLength = 6;
         options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultEmailProvider;
         options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
-    });
+        //添加自定义tokenprovider
+    }).AddTokenProvider<MyTokenProvider<User>>("MyTokenProvider");
+
+
     IdentityBuilder idBuilder = new IdentityBuilder(typeof(User), typeof(Role), builder.Services);
     idBuilder.AddEntityFrameworkStores<DataContext>()
              .AddDefaultTokenProviders()
@@ -98,7 +101,7 @@ builder.Services.AddScoped<IJWTService, JWTService>();
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(opt =>
                     {
-                        byte[] bytes = Encoding.UTF8.GetBytes(JwtOptions.SecKey);
+                        byte[] bytes = Encoding.UTF8.GetBytes("asddddddddddddddddddddddddddddddddddddddddddddddd");
                         var secKey = new SymmetricSecurityKey(bytes);
                         opt.TokenValidationParameters = new()
                         {
