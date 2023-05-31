@@ -2,8 +2,8 @@ using JWTLogin;
 using JWTLogin.Data;
 using JWTLogin.Filters;
 using JWTLogin.JWTService;
-using JWTLogin.Middleware;
 using JWTLogin.Model;
+using JWTLogin.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +29,14 @@ builder.Services.Configure<MvcOptions>(opt =>
 
 builder.Services.AddScoped<IJWTService, JWTService>();
 
+{
+    //解决分布式问题,需要Redis
+    //包：Microsoft.AspNetCore.SignalR.StackExchangeRedis
+    builder.Services.AddSignalR().AddStackExchangeRedis("localhost", opt =>
+    {
+        opt.Configuration.ChannelPrefix = "SignalR_";
+    });
+}
 {
     builder.Services.AddDbContext<DataContext>(opt =>
     {
@@ -82,7 +90,7 @@ builder.Services.AddScoped<IJWTService, JWTService>();
 }
 
 {
-    Console.WriteLine(builder.Configuration.GetSection("JWT").GetValue(typeof(string),"SecKey"));
+
     // JwtBearer设置
     builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection("JWT"));
     var JwtOptions = builder.Configuration.GetSection("JWT").Get<JWTOptions>();
@@ -110,6 +118,26 @@ builder.Services.AddScoped<IJWTService, JWTService>();
                             ValidateLifetime = true,
 
                         };
+
+                        // SignalR的JWT认证
+                        // websocket不支持自定义报文头
+                        // 所以jwt需要通过url中的querystring传递
+                        // 然后在服务器的OnMessageReceived中
+                        // 把querystring中的jwt读出来赋值给context.token
+                        opt.Events = new JwtBearerEvents()
+                        {
+                            OnMessageReceived = (context) =>
+                            {
+                                var accessToken = context.Request.Query["access_token"];
+                                var path = context.Request.Path;
+                                if (!string.IsNullOrEmpty(accessToken)
+                                && path.StartsWithSegments("/MyHub"))
+                                {
+                                    context.Token = accessToken;
+                                }
+                                return Task.CompletedTask;
+                            }
+                        };
                     });
 }
 
@@ -131,6 +159,7 @@ var app = builder.Build();
 
 {
     app.UseCors();
+    app.MapHub<MyHub>("/MyHub");
 }
 
 // Configure the HTTP request pipeline.

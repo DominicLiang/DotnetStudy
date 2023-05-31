@@ -23,6 +23,7 @@ const logout = async () => {
   <div class="page">
     <div class="nav">
       <RouterLink class="link" to="/">Home</RouterLink>
+      <RouterLink class="link" to="/signalR">SignalR</RouterLink>
       <RouterLink class="link" to="/login">Login</RouterLink>
       <a class="link" @click="logout">Logout</a>
     </div>

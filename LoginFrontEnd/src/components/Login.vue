@@ -2,7 +2,9 @@
 import { ref } from 'vue'
 import httpInstance from '../utils/http'
 import { useRouter } from 'vue-router'
+import { connectionStore } from '../stores/signalR'
 
+const conn = connectionStore()
 const router = useRouter()
 
 const data = ref({
@@ -24,6 +26,7 @@ const Submit = () => {
   res
     .then((value) => {
       isCanLogin.value = false
+      conn.getConnection()
       router.replace({ path: '/' })
     })
     .catch((error) => {

@@ -1,30 +1,23 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-import * as signalR from '@microsoft/signalr'
+import { connectionStore } from '../stores/signalR'
 
-let connection
+const conn = connectionStore()
+
 const userMsg = ref()
 const msg = ref([])
 
 const onKeyPress = async (e) => {
   if (e.keyCode != 13) return
-  await connection.invoke('SendPublicMsg', userMsg.value)
+    await conn.connection.invoke('SendPublicMsg', userMsg.value)
   //   对应服务器的SendPublicMsg方法
   userMsg.value = ''
 }
 
 onMounted(async () => {
-  connection = new signalR.HubConnectionBuilder()
-    .withUrl('https://localhost:7257/MyHub', {
-      skipNegotiation: true,
-      transport: signalR.HttpTransportType.WebSockets
+    conn.connection.on('PublicMsgReceived', (m) => {
+      msg.value.push(m)
     })
-    .withAutomaticReconnect()
-    .build()
-  await connection.start()
-  connection.on('PublicMsgReceived', (m) => {
-    msg.value.push(m)
-  })
 })
 </script>
 

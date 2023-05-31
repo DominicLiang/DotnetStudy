@@ -19,7 +19,6 @@ builder.Services.AddSwaggerGen();
 {
     //解决分布式问题,需要Redis
     //包：Microsoft.AspNetCore.SignalR.StackExchangeRedis
-
     builder.Services.AddSignalR().AddStackExchangeRedis("localhost", opt =>
     {
         opt.Configuration.ChannelPrefix = "SignalR_";
