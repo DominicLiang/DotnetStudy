@@ -1,3 +1,5 @@
+using _04_ASP.NET中使用依赖注入;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,20 +9,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 使服务端接受这个客户端的请求
-builder.Services.AddCors(opt =>
-{
-    opt.AddDefaultPolicy(b =>
-    {
-        b.WithOrigins(new string[] 
-        {
-            "http://localhost:5173"
-        })
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials();
-    });
-});//
+builder.Services.AddSingleton<Calculator>();
+builder.Services.AddScoped<DoSomethingLong>();
 
 var app = builder.Build();
 
@@ -30,8 +20,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseCors();// 使服务端接受这个客户端的请求
 
 app.UseHttpsRedirection();
 
