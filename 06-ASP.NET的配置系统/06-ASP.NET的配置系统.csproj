@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Zack.AnyDBConfigProvider" Version="1.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Custom\" />
   </ItemGroup>
 
   <ItemGroup>

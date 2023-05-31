@@ -4,7 +4,20 @@
 // 更改环境变量
 // 项目右键属性-调试-打开调试启动配置文件UI
 
+using Microsoft.Data.SqlClient;
+
 var builder = WebApplication.CreateBuilder(args);
+string connStr = builder.Configuration.GetValue<string>("DefaultDB:ConnStr");
+Console.WriteLine(connStr);
+builder.Host.ConfigureAppConfiguration((c, b) =>
+{
+    b.AddDbConfiguration(() =>
+    {
+        return new SqlConnection(connStr);
+    }, tableName: "config", reloadOnChange: true, reloadInterval: TimeSpan.FromSeconds(2));
+});
+
+Console.WriteLine(builder.Configuration.GetSection("JWT").Value);
 
 // Add services to the container.
 
@@ -30,11 +43,11 @@ if (app.Environment.IsDevelopment())
 // 需要写一个不存在于项目中，但是能读取的配置文件，这样来防止泄漏
 // VS在项目中右键-管理用户机密就能创建这样的配置文件
 // 这个配置文件虽然不存在项目中，但是项目能读取 如下
-if (app.Environment.IsDevelopment())
-{
-    string s = builder.Configuration.GetSection("connStr").Value;
-    Console.WriteLine(s);
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    string s = builder.Configuration.GetSection("connStr").Value;
+//    Console.WriteLine(s);
+//}
 
 
 
