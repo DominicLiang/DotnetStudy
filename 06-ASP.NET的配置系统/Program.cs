@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 // 这个配置文件虽然不存在项目中，但是项目能读取 如下
 if (app.Environment.IsDevelopment())
 {
-    string s = app.Configuration.GetSection("connStr").Value;
+    string s = builder.Configuration.GetSection("connStr").Value;
     Console.WriteLine(s);
 }
 

@@ -94,6 +94,7 @@ builder.Services.AddScoped<IJWTService, JWTService>();
     // JwtBearer…Ë÷√
     builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection("JWT"));
     var JwtOptions = builder.Configuration.GetSection("JWT").Get<JWTOptions>();
+    Console.WriteLine(JwtOptions.SecKey);
     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(opt =>
                     {
