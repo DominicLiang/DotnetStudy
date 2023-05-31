@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		README.md = README.md
 	EndProjectSection
 EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET", ".NET", "{93060A2E-7F93-4205-9229-937C537D6BA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET", "ASP.NET", "{613355D0-3AC0-4FA1-90A1-B1AAC4288227}"
+EndProject
+
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00-作业", "00-作业\00-作业.csproj", "{77A15A77-D806-48C5-848E-0B5E6C6F63F3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-泛型", "01-泛型\01-泛型.csproj", "{008CF3DE-352E-46BC-B2DD-F5F1232CB7D8}"
@@ -55,12 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "20-配置系统", "20-配�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21-C#最近的新语法", "21-C#最近的新语法\21-C#最近的新语法.csproj", "{ED5BA974-DC38-4A86-A3E1-5C8CC5A8FA13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NET MVC入门", "ASP.NET MVC入门\ASP.NET MVC入门.csproj", "{12194E49-C2AD-4990-B4CD-5A80EB86F574}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET", ".NET", "{93060A2E-7F93-4205-9229-937C537D6BA7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET", "ASP.NET", "{613355D0-3AC0-4FA1-90A1-B1AAC4288227}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
