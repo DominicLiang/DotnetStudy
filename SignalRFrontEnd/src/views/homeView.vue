@@ -1,5 +1,7 @@
 <script setup></script>
 
-<template></template>
+<template>
+    homeview11111
+</template>
 
 <style scoped></style>
