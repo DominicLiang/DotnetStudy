@@ -82,6 +82,7 @@ builder.Services.AddScoped<IJWTService, JWTService>();
 }
 
 {
+    Console.WriteLine(builder.Configuration.GetSection("JWT").GetValue(typeof(string),"SecKey"));
     // JwtBearer设置
     builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection("JWT"));
     var JwtOptions = builder.Configuration.GetSection("JWT").Get<JWTOptions>();
@@ -101,7 +102,7 @@ builder.Services.AddScoped<IJWTService, JWTService>();
                             ValidIssuer = "issuer",
 
                             // 验证订阅人
-                            ValidateAudience = false,
+                            ValidateAudience = true,
                             ValidAudience = "audience",
 
                             // 验证过期时间和生命周期

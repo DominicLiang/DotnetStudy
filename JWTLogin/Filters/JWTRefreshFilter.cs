@@ -33,12 +33,13 @@ public class JWTRefreshFilter : IAsyncActionFilter
         //刷新Token
         if (token != null
             && token.ValidTo > DateTime.UtcNow
-            && token.ValidTo.AddMinutes(-30) <= DateTime.UtcNow)
+            && token.ValidTo.AddMinutes(-1) <= DateTime.UtcNow)
         {
             User user = await manager.FindByNameAsync(context.HttpContext.User.Identity?.Name);
             if (user != null)
             {
                 string newToken = jwtService.CreateJWT(token.Claims, options.Value);
+                context.HttpContext.Response.Headers.Add("Access-Control-Expose-Headers", "X-Refresh-Token");
                 context.HttpContext.Response.Headers.Add("X-Refresh-Token", newToken);
                 user.Token = newToken;
                 await manager.UpdateAsync(user);

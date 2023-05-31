@@ -97,9 +97,25 @@ public class Test : ControllerBase
             string token = _jwtService.CreateJWT(claims, _jwtOptions.Value);
             user.Token = token;
             await _userManager.UpdateAsync(user);
-            return Ok(token);
+            HttpContext.Response.Headers.Add("Access-Control-Expose-Headers", "X-Refresh-Token");
+            HttpContext.Response.Headers.Add("X-Refresh-Token", token);
+            return Ok();
         }
+
         return BadRequest();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Logout(string username)
+    {
+        var user = await _userManager.FindByNameAsync(username);
+        if (user != null)
+        {
+            user.Token = string.Empty;
+            await _userManager.UpdateAsync(user);
+            return Ok();
+        }
+        return Unauthorized();
     }
 
     [HttpPost]

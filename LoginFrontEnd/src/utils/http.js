@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useUserStore } from '../stores/user'
 
 const httpInstance = axios.create({
   baseURL: 'https://localhost:7257/Test',
@@ -7,19 +8,33 @@ const httpInstance = axios.create({
 
 httpInstance.interceptors.request.use(
   (config) => {
+    const userStore = useUserStore()
+    const token = userStore.token
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
     return config
   },
-  (e) => {
-    return Promise.reject(e)
+  (error) => {
+    return Promise.reject(error)
   }
 )
 
 httpInstance.interceptors.response.use(
-  (res) => {
-    return res.data
+  (response) => {
+    const token = response.headers['x-refresh-token']
+    if (token) {
+      const userStore = useUserStore()
+      userStore.token = token
+    }
+
+    return response.data
   },
-  (e) => {
-    return Promise.reject(e)
+  (error) => {
+    const userStore = useUserStore()
+    userStore.token = null
+
+    return Promise.reject(error)
   }
 )
 

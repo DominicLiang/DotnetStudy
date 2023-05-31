@@ -1,10 +1,30 @@
-<script setup></script>
+<script setup>
+import { useUserStore } from './stores/user'
+import httpInstance from './utils/http'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const logout = async () => {
+  const userStore = useUserStore()
+  userStore.token = null
+  await httpInstance.request({
+    method: 'POST',
+    url: '/Logout',
+    params: {
+      username: userStore.username
+    }
+  })
+  router.push('/login')
+}
+</script>
 
 <template>
   <div class="page">
     <div class="nav">
       <RouterLink class="link" to="/">Home</RouterLink>
       <RouterLink class="link" to="/login">Login</RouterLink>
+      <a class="link" @click="logout">Logout</a>
     </div>
     <div class="content">
       <RouterView />
