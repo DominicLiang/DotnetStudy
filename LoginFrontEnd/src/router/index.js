@@ -17,6 +17,11 @@ const router = createRouter({
       path: '/signalR',
       name: 'signalR',
       component: () => import('../views/ChatRoomView.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterView.vue')
     }
   ]
 })

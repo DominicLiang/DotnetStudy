@@ -30,6 +30,11 @@ public class JWTRefreshFilter : IAsyncActionFilter
             token = new JwtSecurityTokenHandler().ReadJwtToken(authorization.Substring("Bearer ".Length));
         }
 
+        foreach (var claim in token.Claims)
+        {
+            Console.WriteLine(claim.Type+"   "+claim.Value);
+        }
+
         //刷新Token
         if (token != null
             && token.ValidTo > DateTime.UtcNow

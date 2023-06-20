@@ -2,6 +2,7 @@
 using EFCoreBooks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreBooks.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230626012622_sodifjo")]
+    partial class sodifjo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -58,11 +61,13 @@ namespace EFCoreBooks.Migrations
 
             modelBuilder.Entity("EFCoreBooks.People", b =>
                 {
-                    b.HasOne("EFCoreBooks.Book", null)
+                    b.HasOne("EFCoreBooks.Book", "Book")
                         .WithOne("People")
                         .HasForeignKey("EFCoreBooks.People", "BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("EFCoreBooks.Book", b =>

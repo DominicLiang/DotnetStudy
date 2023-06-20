@@ -16,17 +16,19 @@ const isCanLogin = ref(false)
 
 const Submit = () => {
   const res = httpInstance.request({
-    url: '/Login',
+    url: '/Login/LoginByUsername',
     method: 'POST',
-    params: {
+    data: {
       username: data.value.username,
-      password: data.value.password
+      password: data.value.password,
+      email: null,
+      phoneNumber: null
     }
   })
   res
     .then((value) => {
       isCanLogin.value = false
-      conn.getConnection()
+      // conn.getConnection()
       router.replace({ path: '/' })
     })
     .catch((error) => {

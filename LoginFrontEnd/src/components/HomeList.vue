@@ -2,52 +2,67 @@
 import { ref } from 'vue'
 import httpInstance from '../utils/http'
 
-const NoNeedLoginText = ref()
-const NoNeedLogin = () => {
+const ContentText = ref()
+const Content = () => {
   const res = httpInstance.request({
-    url: '/ContentNoNeedLogin'
+    url: '/Test/Content'
   })
   res
     .then((value) => {
-      NoNeedLoginText.value = value
+      ContentText.value = value
     })
     .catch((error) => {
-      vaild(error, NoNeedLoginText)
+      vaild(error, ContentText)
     })
 }
 
-const NeedLoginText = ref()
-const NeedLogin = () => {
+const ContentNeedMemberText = ref()
+const ContentNeedMember = () => {
   const res = httpInstance.request({
-    url: '/ContentNeedLogin'
+    url: '/Test/ContentNeedMember'
   })
   res
     .then((value) => {
-      NeedLoginText.value = value
+      ContentNeedMemberText.value = value
     })
     .catch((error) => {
-      vaild(error, NeedLoginText)
+      vaild(error, ContentNeedMemberText)
     })
 }
 
-const NeedAdminText = ref()
-const NeedAdmin = () => {
+const ContentNeedStaffText = ref()
+const ContentNeedStaff = () => {
   const res = httpInstance.request({
-    url: '/ContentNeedAdmin'
+    url: '/Test/ContentNeedStaff'
   })
   res
     .then((value) => {
-      NeedAdminText.value = value
+      ContentNeedStaffText.value = value
     })
     .catch((error) => {
-      vaild(error, NeedAdminText)
+      vaild(error, ContentNeedStaffText)
+    })
+}
+
+const ContentNeedAdminText = ref()
+const ContentNeedAdmin = () => {
+  const res = httpInstance.request({
+    url: '/Test/ContentNeedAdmin'
+  })
+  res
+    .then((value) => {
+      ContentNeedAdminText.value = value
+    })
+    .catch((error) => {
+      vaild(error, ContentNeedAdminText)
     })
 }
 
 const Clear = () => {
-  NoNeedLoginText.value = ''
-  NeedLoginText.value = ''
-  NeedAdminText.value = ''
+  ContentText.value = ''
+  ContentNeedMemberText.value = ''
+  ContentNeedStaffText.value = ''
+  ContentNeedAdminText.value = ''
 }
 
 const vaild = (error, needChange) => {
@@ -68,15 +83,18 @@ const vaild = (error, needChange) => {
 }
 </script>
 
-<template>
-  <a class="btn" @click="NoNeedLogin">NoNeedLogin</a>
-  <span class="label">{{ NoNeedLoginText }}</span>
+<template class="template">
+  <a class="btn" @click="Content">Content</a>
+  <span class="label">{{ ContentText }}</span>
 
-  <a class="btn" @click="NeedLogin">NeedLogin</a>
-  <span class="label">{{ NeedLoginText }}</span>
+  <a class="btn" @click="ContentNeedMember">ContentNeedMember</a>
+  <span class="label">{{ ContentNeedMemberText }}</span>
 
-  <a class="btn" @click="NeedAdmin">NeedAdmin</a>
-  <span class="label">{{ NeedAdminText }}</span>
+  <a class="btn" @click="ContentNeedStaff">ContentNeedStaff</a>
+  <span class="label">{{ ContentNeedStaffText }}</span>
+
+  <a class="btn" @click="ContentNeedAdmin">ContentNeedAdmin</a>
+  <span class="label">{{ ContentNeedAdminText }}</span>
 
   <a class="btn" @click="Clear">Clear</a>
 </template>

@@ -1,16 +1,18 @@
 <script setup>
+import { ref } from 'vue'
 import { useUserStore } from './stores/user'
 import httpInstance from './utils/http'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const userStore = useUserStore()
+
 
 const logout = async () => {
   await httpInstance.request({
     method: 'POST',
-    url: '/Logout',
+    url: '/Login/Logout'
   })
-  const userStore = useUserStore()
   userStore.token = null
   router.push('/login')
 }
@@ -20,9 +22,10 @@ const logout = async () => {
   <div class="page">
     <div class="nav">
       <RouterLink class="link" to="/">Home</RouterLink>
-      <RouterLink class="link" to="/signalR">SignalR</RouterLink>
-      <RouterLink class="link" to="/login">Login</RouterLink>
-      <a class="link" @click="logout">Logout</a>
+      <!-- <RouterLink class="link" to="/signalR">SignalR</RouterLink> -->
+      <RouterLink class="link" to="/login" v-if="!userStore.token">Login</RouterLink>
+      <a class="link" @click="logout" v-if="userStore.token">Logout</a>
+      <RouterLink class="link" to="/register">register</RouterLink>
     </div>
     <div class="content">
       <RouterView />

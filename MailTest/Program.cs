@@ -1,5 +1,7 @@
-﻿using MailKit.Net.Smtp;
+﻿using System.Text;
+using MailKit.Net.Smtp;
 using MimeKit;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 //var message = new MimeMessage();
 //message.From.Add(new MailboxAddress("Joey Tribbiani", "mytao888@sina.com"));
@@ -27,5 +29,15 @@ using MimeKit;
 //    Console.WriteLine(res.StartsWith("ok"));
 //}
 
-string s = "您好，感谢您在我淘注册账户！\n\n您可以直接点击下方链接进行验证:\n{0}\n\n本邮件无需回复。\n如果不是本人操作，请忽略。\n\n\n--\n我淘";
-Console.WriteLine(string.Format(s, 123));
+//string s = "您好，感谢您在我淘注册账户！\n\n您可以直接点击下方链接进行验证:\n{0}\n\n本邮件无需回复。\n如果不是本人操作，请忽略。\n\n\n--\n我淘";
+//Console.WriteLine(string.Format(s, 123));
+
+string msg = "您好，感谢您在我淘注册账户！\n\n您可以直接点击下方链接进行验证:\n{0}\n\n本邮件无需回复。\n如果不是本人操作，请忽略。\n\n\n--\n我淘";
+string e = Convert.ToBase64String(Encoding.Default.GetBytes(msg)).Replace("+", "%2B");
+string d= Encoding.Default.GetString(Convert.FromBase64String(e.Replace("%2B", "+")));
+
+
+Console.WriteLine(e);
+Console.WriteLine(d);
+Console.WriteLine(Convert.ToBase64String(Encoding.Default.GetBytes(msg)));
+

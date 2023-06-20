@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useUserStore } from '../stores/user'
 
 const httpInstance = axios.create({
-  baseURL: 'https://localhost:7257/Test',
+  baseURL: 'https://localhost:7134/api',
   timeout: 5000
 })
 
@@ -22,7 +22,7 @@ httpInstance.interceptors.request.use(
 
 httpInstance.interceptors.response.use(
   (response) => {
-    const token = response.headers['x-refresh-token']
+    const token = response.headers['x-token']
     if (token) {
       const userStore = useUserStore()
       userStore.token = token

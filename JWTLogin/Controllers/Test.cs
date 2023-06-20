@@ -92,6 +92,7 @@ public class Test : ControllerBase
             List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Sid, user.Id.ToString()),
             };
             foreach (var role in roles)
             {

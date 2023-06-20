@@ -1,6 +1,7 @@
 ﻿using EFCoreBooks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace _07_分层项目中EFCore用法.Controllers
 {
@@ -16,10 +17,31 @@ namespace _07_分层项目中EFCore用法.Controllers
         }
 
         [HttpGet]
-        public string Demo1()
+        public void T0()
         {
-            int c = _dbCtx.Books.Count();
-            return c.ToString();
+
+            _dbCtx.Books.Add(new Book { Url = "http://blogs.msdn.com/adonet" });
+
+            _dbCtx.SaveChangesAsync();
         }
+
+        [HttpGet]
+        public IActionResult T1()
+        {
+            var blog = _dbCtx.Books.OrderBy(b => b.Id).First();
+            blog.Url = "https://devblogs.microsoft.com/dotnet";
+            blog.People = new People { Title = "Hello World", Content = "I wrote an app using EF Core!" };
+            _dbCtx.SaveChanges();
+            return Ok(blog);
+        }
+
+        [HttpGet]
+        public IActionResult T2()
+        {
+            var book = _dbCtx.Books.Include(r => r.People).FirstOrDefault();
+            Console.WriteLine(book.People);
+            return Ok(book.People);
+        }
+
     }
 }

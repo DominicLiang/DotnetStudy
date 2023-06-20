@@ -77,6 +77,26 @@ public class TestController : ControllerBase
     }
 
     [HttpGet]
+    public async void Set(string id, string value)
+    {
+        var opt = new DistributedCacheEntryOptions();
+        opt.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60);
+        await _distCache.SetStringAsync(id, value, opt);
+    }
+
+    [HttpGet]
+    public async Task<string?> Get(string id)
+    {
+        return await _distCache.GetStringAsync(id);
+    }
+
+    [HttpGet]
+    public async void Remove(string id)
+    {
+        await _distCache.RemoveAsync(id);
+    }
+
+    [HttpGet]
     public async Task<ActionResult<Book>> DistCache(int id)
     {
         // 分布式内存缓存 除非必要没必要使用 只有在服务器太多的情况下使用
