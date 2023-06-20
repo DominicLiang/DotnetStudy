@@ -10,16 +10,16 @@ try
     // 这里采用的是从环境变量读取的方式，需要在环境变量中先设置这两个值。
     Credential cred = new Credential
     {
-        SecretId = Environment.GetEnvironmentVariable("AKIDRi0FXimiYI6vdEsX8wb7eaQRI3f8Shz7"),
-        SecretKey = Environment.GetEnvironmentVariable("zuoiTAhz36AB1ksq7B1cz84qPk192GQW")
+        SecretId = Environment.GetEnvironmentVariable(""),
+        SecretKey = Environment.GetEnvironmentVariable("")
     };
     SmsClient client = new SmsClient(cred, "ap-guangzhou");
     SendSmsRequest request = new SendSmsRequest()
     {
-        PhoneNumberSet = new string[] { "+86" + "17520322982" },
-        SmsSdkAppid = "1400832128",
-        Sign = "Unity特效学习公众号",
-        TemplateID = "1839066",
+        PhoneNumberSet = new string[] { "+86" + "" },
+        SmsSdkAppid = "",
+        Sign = "",
+        TemplateID = "",
         TemplateParamSet = new string[] { GenerateRandomCode(6) },
     };
     SendSmsResponse response = await client.SendSms(request);
