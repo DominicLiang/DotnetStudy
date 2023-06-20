@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SendGridTest": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY": "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"
+      }
+    }
+  }
+}

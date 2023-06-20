@@ -7,17 +7,17 @@
 using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
-string connStr = builder.Configuration.GetValue<string>("DefaultDB:ConnStr");
-Console.WriteLine(connStr);
-builder.Host.ConfigureAppConfiguration((c, b) =>
-{
-    b.AddDbConfiguration(() =>
-    {
-        return new SqlConnection(connStr);
-    }, tableName: "config", reloadOnChange: true, reloadInterval: TimeSpan.FromSeconds(2));
-});
-
-Console.WriteLine(builder.Configuration.GetSection("JWT").Value);
+//string connStr = builder.Configuration.GetValue<string>("DefaultDB:ConnStr");
+//Console.WriteLine(connStr);
+//builder.Host.ConfigureAppConfiguration((c, b) =>
+//{
+//    b.AddDbConfiguration(() =>
+//    {
+//        return new SqlConnection(connStr);
+//    }, tableName: "config", reloadOnChange: true, reloadInterval: TimeSpan.FromSeconds(2));
+//});
+string s=builder.Configuration.GetSection("JWT").Value;
+Console.WriteLine(s);
 
 // Add services to the container.
 
@@ -58,3 +58,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+class test
+{
+    public string a { get; set; }
+    public string b { get; set; }
+    public string c { get; set; }
+}

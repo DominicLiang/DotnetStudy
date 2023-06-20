@@ -186,7 +186,8 @@ public class Test : ControllerBase
     {
         User user = await _userManager.FindByNameAsync("hello");
         if (user == null) return Ok("no user");
-        var res = await _userManager.GenerateUserTokenAsync(user, "MyTokenProvider", "PhoneNumberConfirmation");
+        var res = await _userManager.GenerateChangePhoneNumberTokenAsync(user, "1234567");
+        //var res = await _userManager.GenerateUserTokenAsync(user, "MyTokenProvider", "PhoneNumberConfirmation");
         //var encodedToken = HttpUtility.UrlEncode(res);
         return Ok(res);
     }
@@ -196,7 +197,7 @@ public class Test : ControllerBase
     {
         User user = await _userManager.FindByNameAsync("hello");
         if (user == null) return Ok("no user");
-        var res = await _userManager.VerifyUserTokenAsync(user, "MyTokenProvider", "PhoneNumberConfirmation", token);
+        var res = await _userManager.VerifyChangePhoneNumberTokenAsync(user, token, "1234567");
         return Ok(res);
     }
 }

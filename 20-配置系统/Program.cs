@@ -46,36 +46,48 @@ internal class Program
             // DI
             ServiceCollection services = new ServiceCollection();
             services.AddScoped<TestController>();
+            
 
             // !!!! 
             services.Configure<Config>(e => configRoot.Bind(e));
 
-            using (ServiceProvider sp = services.BuildServiceProvider())
-            {
-                using (var scope = sp.CreateScope())
-                {
-                    var testController = scope.ServiceProvider.GetRequiredService<TestController>();
-                    testController.Test();
-                }
-            }
+
+
+            //using (ServiceProvider sp = services.BuildServiceProvider())
+            //{
+            //    using (var scope = sp.CreateScope())
+            //    {
+            //        var testController = scope.ServiceProvider.GetRequiredService<TestController>();
+            //        testController.Test();
+            //    }
+            //}
         }
     }
 }
 
 class TestController
 {
-    private readonly IOptionsSnapshot<Config> optConfig;
+    //private readonly IOptionsSnapshot<Config> optConfig;
 
-    public TestController(IOptionsSnapshot<Config> optConfig)
+    //public TestController(IOptionsSnapshot<Config> optConfig)
+    //{
+    //    this.optConfig = optConfig;
+    //}
+
+    private readonly IConfiguration configuration;
+
+    public TestController(IConfiguration configuration)
     {
-        this.optConfig = optConfig;
+        this.configuration = configuration;
     }
 
     public void Test()
     {
-        Config config = optConfig.Value;
-        Console.WriteLine(config.Age);
-        Console.WriteLine(string.Join(",", config.Proxy.Ids));
+
+        Console.WriteLine(configuration);
+        //Config config = optConfig.Value;
+        //Console.WriteLine(config.Age);
+        //Console.WriteLine(string.Join(",", config.Proxy.Ids));
     }
 }
 
